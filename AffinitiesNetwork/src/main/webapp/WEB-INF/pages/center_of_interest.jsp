@@ -9,19 +9,16 @@
 </head>
 <body>
   <div class="title">
-    <center> <h1>Centers of interest<h1> </center>
-  </div>
+    <center> <h1>requestScope.name<h1> </center>
+      <div class="buttonsContainer">
+        <button type="button" name="button">-</button>
+        <button type="button" name="button">undefined</button>
+        <button type="button" name="button">+</button>
+      </div>
 
-  <div>
-    <c:forEach var="centerOfInterest" items="${requestScope.centersOfInterest}">
-    <div class="container">
-      <h2>
-        <a href="https://www.w3schools.com/html/">${centerOfInterest.name}</a>
-      </h2>
-      ${centerOfInterest.description}
     </div>
-  </c:forEach>
-  </div>
-
-</body>
-</html>
+    <div class="container">
+      ${requestScope.description}
+    </div>
+  </body>
+  </html>
