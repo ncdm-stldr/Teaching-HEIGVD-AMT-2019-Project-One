@@ -2,20 +2,22 @@ version: '3'
 services:
     
     payara:
-        build: ../images/payara
+        build:
+            context: .
+            dockerfile: images/payara/Dockerfile
         environment:
             - ADMIN_PASSWORD=adminadmin
         ports:
             - "8080:8080"
             - "4848:4848" 
     mysql:
-        build: ../images/mysql
+        build: images/mysql
         environment: 
             - MYSQL_ROOT_PASSWORD=adminpw
         ports:
             - "3306:3306"  
     phpmyadmin:
-        build: ../images/phpmyadmin
+        build: images/phpmyadmin
         environment:
             - MYSQL_ROOT_PASSWORD=adminpw
         ports:

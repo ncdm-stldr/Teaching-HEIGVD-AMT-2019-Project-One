@@ -1,6 +1,4 @@
 FROM payara/server-full:5.183
 
-MAINTAINER Olivier Liechti <olivier.liechti@heig-vd.ch>
-
-
-ADD drivers/mysql-connector-java-5.1.39-bin.jar /glassfish4/glassfish/lib/
+ADD AffinitiesNetwork/target/AffinitiesNetwork-1.0-SNAPSHOT.war /opt/payara5/glassfish/domains/domain1/autodeploy/
+ADD images/payara/drivers/mysql-connector-java-5.1.39-bin.jar /glassfish4/glassfish/lib/

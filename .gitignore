@@ -1,12 +1,15 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
+AffinitiesNetwork/target/
+AffinitiesNetwork/pom.xml.tag
+AffinitiesNetwork/pom.xml.releaseBackup
+AffinitiesNetwork/pom.xml.versionsBackup
+AffinitiesNetwork/pom.xml.next
+AffinitiesNetwork/release.properties
+AffinitiesNetwork/dependency-reduced-pom.xml
+AffinitiesNetwork/buildNumber.properties
+AffinitiesNetwork/.mvn/timing.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
-!/.mvn/wrapper/maven-wrapper.jar
+!AffinitiesNetwork/.mvn/wrapper/maven-wrapper.jar
+
+# Don't commit netbeans config file
+AffinitiesNetwork/nb-configuration.xml
