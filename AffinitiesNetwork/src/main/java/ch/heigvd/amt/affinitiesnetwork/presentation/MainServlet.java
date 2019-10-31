@@ -20,7 +20,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author NS
  */
 public class MainServlet extends HttpServlet {
-    
+    //quickstart mocked database (will be removed later)
+    static Collection<CenterOfInterest> centersOfInterest = new ArrayList<CenterOfInterest>();
+    static {
+        centersOfInterest.add(new CenterOfInterest("wejhvcdgwj", "jdch wsjdcvs jdxsvh"));
+        centersOfInterest.add(new CenterOfInterest("cdbhdj", "jidzcg jdxsvh"));
+        centersOfInterest.add(new CenterOfInterest("wefdgwj", "jdch wsjdcvs jdxsvh"));
+        centersOfInterest.add(new CenterOfInterest("wejfwj", "jdc37467293vs jdxsvh"));
+    }
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -35,11 +42,6 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Collection<CenterOfInterest> centersOfInterest = new ArrayList<CenterOfInterest>();
-        centersOfInterest.add(new CenterOfInterest("wejhvcdgwj", "jdch wsjdcvs jdxsvh"));
-        centersOfInterest.add(new CenterOfInterest("cdbhdj", "jidzcg jdxsvh"));
-        centersOfInterest.add(new CenterOfInterest("wefdgwj", "jdch wsjdcvs jdxsvh"));
-        centersOfInterest.add(new CenterOfInterest("wejfwj", "jdc37467293vs jdxsvh"));
         request.setAttribute("centersOfInterest", centersOfInterest);
         request.getRequestDispatcher("/WEB-INF/pages/index.jsp")
                 .forward(request, response);
