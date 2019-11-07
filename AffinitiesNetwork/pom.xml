@@ -5,7 +5,7 @@
     <artifactId>AffinitiesNetwork</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>AffinitiesNetwork-1.0-SNAPSHOT</name>
+    <name>AffinitiesNetwork</name>
     
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
