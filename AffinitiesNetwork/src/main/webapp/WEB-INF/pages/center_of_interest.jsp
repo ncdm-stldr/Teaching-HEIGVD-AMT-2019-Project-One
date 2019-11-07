@@ -9,7 +9,7 @@
 </head>
 <body>
   <div class="title">
-    <center> <h1>requestScope.name<h1> </center>
+    <center> <h1>${requestScope.centerOfInterest.name}<h1> </center>
       <div class="buttonsContainer">
         <button type="button" name="button">-</button>
         <button type="button" name="button">undefined</button>
@@ -18,7 +18,7 @@
 
     </div>
     <div class="container">
-      ${requestScope.description}
+      ${requestScope.centerOfInterest.description}
     </div>
   </body>
   </html>

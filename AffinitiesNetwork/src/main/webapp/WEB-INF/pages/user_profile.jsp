@@ -8,11 +8,11 @@
 </head>
 <body>
   <div class="title">
-    <h2> Profile of user: ${user.name} </h2>
+    <h1> <center> Profile of user: ${user.name} </center> </h1>
   </div>
   <div class="container">
-    <h3> Affinities </h3>
-    <table class="container">
+      <h2> <center> Affinities </center> </h2>
+    <table class="container" align="center">
       <tr>
         <th>Intensity of affinity</th>
         <th>Center Of Interest</th>
