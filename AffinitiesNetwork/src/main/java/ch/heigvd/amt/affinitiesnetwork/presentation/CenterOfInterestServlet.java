@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author NS
  */
-@WebServlet(name = "CenterOfInterestServlet", urlPatterns = {"/CenterOfInterestServlet"})
 public class CenterOfInterestServlet extends HttpServlet {
     
     @EJB
@@ -38,10 +37,17 @@ public class CenterOfInterestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CenterOfInterest cio = cOIS.getRandomCenterOfInterest();
-        request.setAttribute("centerOfInterest", cio);
-        request.getRequestDispatcher("/WEB-INF/pages/center_of_interest.jsp").
+        String idString = request.getParameter("id");
+        if (idString == null) { response.sendError(404); return; }
+        try {
+            Long id = Long.parseLong(idString);
+            CenterOfInterest cio = cOIS.getCenterOfInterest(id);
+            request.setAttribute("centerOfInterest", cio);
+            request.getRequestDispatcher("/WEB-INF/pages/center_of_interest.jsp").
                 forward(request, response);
+        } catch(NumberFormatException e){
+            response.sendError(404); return;
+        }
     }
 
     /**

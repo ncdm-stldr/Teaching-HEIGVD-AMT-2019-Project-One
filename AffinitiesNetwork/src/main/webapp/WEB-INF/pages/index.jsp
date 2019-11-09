@@ -16,7 +16,7 @@
     <c:forEach var="centerOfInterest" items="${requestScope.centersOfInterest}">
     <div class="container">
       <h2>
-        <a href="https://www.w3schools.com/html/">${centerOfInterest.name}</a>
+        <a href="${pageContext.request.contextPath}/CenterOfInterestServlet?id=2">${centerOfInterest.name}</a>
       </h2>
       ${centerOfInterest.description}
     </div>

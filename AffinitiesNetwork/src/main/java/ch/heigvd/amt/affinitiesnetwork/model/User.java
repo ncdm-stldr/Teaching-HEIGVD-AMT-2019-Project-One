@@ -35,10 +35,20 @@ public class User {
         return affinities;
     }
 
-    public void setAffinities(Collection<Affinity> affinities) {
-        this.affinities = affinities;
+    public void addAffinity(Affinity affinities) {
+        this.affinities.add(affinities);
     }
     
+    @Override
+    public boolean equals(Object o){
+        if(o == null || o instanceof User) return false;
+        return id == ((User) o).id;
+    }
+    
+    @Override
+    public int hashCode(){
+        return (int) id;
+    }
     
     
 }

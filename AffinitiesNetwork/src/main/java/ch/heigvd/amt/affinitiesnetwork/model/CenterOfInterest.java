@@ -11,12 +11,18 @@ package ch.heigvd.amt.affinitiesnetwork.model;
  */
 public class CenterOfInterest {
     
+    private long id;
     private String name;
     private String description;
     
-    public CenterOfInterest(String name, String description) {
+    public CenterOfInterest(long id, String name, String description) {
+        this.id = id;
         this.name = name;
         this.description = description;
+    }
+    
+    public long getId(){
+        return id;
     }
 
     public String getName() {
@@ -25,6 +31,17 @@ public class CenterOfInterest {
 
     public String getDescription() {
         return description;
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        if(o == null || o instanceof CenterOfInterest) return false;
+        return id == ((CenterOfInterest) o).id;
+    }
+    
+    @Override
+    public int hashCode(){
+        return (int) id;
     }
     
 }

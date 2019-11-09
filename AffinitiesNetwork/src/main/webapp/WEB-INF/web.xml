@@ -8,13 +8,21 @@
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>ch.heigvd.amt.affinitiesnetwork.presentation.UserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CenterOfInterestServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.affinitiesnetwork.presentation.CenterOfInterestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
-        <url-pattern>/MainServlet</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
-        <url-pattern>/UserServlet</url-pattern>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CenterOfInterestServet</servlet-name>
+        <url-pattern>/center_of_interest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

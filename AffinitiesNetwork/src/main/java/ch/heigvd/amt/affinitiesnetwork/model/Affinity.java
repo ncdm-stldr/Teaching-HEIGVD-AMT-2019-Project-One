@@ -5,6 +5,8 @@
  */
 package ch.heigvd.amt.affinitiesnetwork.model;
 
+import java.util.Objects;
+
 /**
  *
  * @author NS
@@ -20,8 +22,6 @@ public class Affinity {
         this.intensity = intensity;
         this.centerOfInterest = centerOfInterest;
     }
-    
-
 
     public User getUser() {
         return user;
@@ -35,6 +35,18 @@ public class Affinity {
         return centerOfInterest;
     }
     
+    @Override
+    public boolean equals(Object o){
+        if(o == null || o instanceof Affinity) return false;
+        return user.getId() == ((Affinity) o).user.getId()
+                && centerOfInterest.getId() ==
+                ((Affinity) o).centerOfInterest.getId();
+    }
+    
+    @Override
+    public int hashCode(){
+        return Objects.hash(user.hashCode(), centerOfInterest.hashCode());
+    }
     
     
 }

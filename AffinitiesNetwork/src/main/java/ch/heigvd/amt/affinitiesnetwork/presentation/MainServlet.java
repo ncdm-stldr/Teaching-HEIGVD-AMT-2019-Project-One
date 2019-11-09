@@ -23,12 +23,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MainServlet extends HttpServlet {
     //quickstart mocked database (will be removed later)
-    static Collection<CenterOfInterest> centersOfInterest = new ArrayList<CenterOfInterest>();
+    static final Collection<CenterOfInterest> centersOfInterest = new ArrayList<CenterOfInterest>();
     static {
-        centersOfInterest.add(new CenterOfInterest("wejhvcdgwj", "jdch wsjdcvs jdxsvh"));
-        centersOfInterest.add(new CenterOfInterest("cdbhdj", "jidzcg jdxsvh"));
-        centersOfInterest.add(new CenterOfInterest("wefdgwj", "jdch wsjdcvs jdxsvh"));
-        centersOfInterest.add(new CenterOfInterest("wejfwj", "jdc37467293vs jdxsvh"));
+        centersOfInterest.add(new CenterOfInterest(1, "wejhvcdgwj", "jdch wsjdcvs jdxsvh"));
+        centersOfInterest.add(new CenterOfInterest(2, "cdbhdj", "jidzcg jdxsvh"));
+        centersOfInterest.add(new CenterOfInterest(3, "wefdgwj", "jdch wsjdcvs jdxsvh"));
+        centersOfInterest.add(new CenterOfInterest(4, "wejfwj", "jdc37467293vs jdxsvh"));
     }
     
     @EJB
@@ -47,7 +47,7 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("centersOfInterest", cOIS.getNCentersOfInterest(10));
+        request.setAttribute("centersOfInterest", cOIS.getNRandomCentersOfInterest(10));
         request.getRequestDispatcher("/WEB-INF/pages/index.jsp")
                 .forward(request, response);
     }

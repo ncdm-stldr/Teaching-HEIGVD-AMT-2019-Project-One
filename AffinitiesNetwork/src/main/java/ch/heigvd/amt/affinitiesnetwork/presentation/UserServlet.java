@@ -9,11 +9,13 @@ import ch.heigvd.amt.affinitiesnetwork.model.User;
 import ch.heigvd.amt.affinitiesnetwork.services.UsersService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import sun.rmi.runtime.Log;
 
 /**
  *
@@ -36,10 +38,20 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User u = us.getRandomUser();
-        request.setAttribute("user", u);
-        request.getRequestDispatcher("/WEB-INF/pages/user_profile.jsp").
-                forward(request, response);
+        String idString = request.getParameter("id");
+        if(idString == null) {response.sendError(404); return;}
+        try{
+            Long id = Long.parseLong(idString);
+            User u = us.getUser(id);
+            if(u == null) {response.sendError(404); return;}
+            request.setAttribute("user", u);
+            request.getRequestDispatcher("/WEB-INF/pages/user_profile.jsp").
+                    forward(request, response);
+        } catch(NumberFormatException e){
+            response.sendError(404);
+        }
+        
+        
     }
 
     /**
