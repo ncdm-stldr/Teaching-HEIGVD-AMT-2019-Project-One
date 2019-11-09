@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <filter>
+        <filter-name>AutorizationFilter</filter-name>
+        <filter-class>ch.heigvd.amt.affinitiesnetwork.presentation.AutorizationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AutorizationFilter</filter-name>
+        <url-pattern>/me</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>MainServlet</servlet-name>
         <servlet-class>ch.heigvd.amt.affinitiesnetwork.presentation.MainServlet</servlet-class>
@@ -12,6 +20,10 @@
         <servlet-name>CenterOfInterestServlet</servlet-name>
         <servlet-class>ch.heigvd.amt.affinitiesnetwork.presentation.CenterOfInterestServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SignInUpServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.affinitiesnetwork.presentation.SignInUpServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/</url-pattern>
@@ -23,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CenterOfInterestServet</servlet-name>
         <url-pattern>/center_of_interest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignInUpServlet</servlet-name>
+        <url-pattern>/sign_in_up</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

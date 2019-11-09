@@ -5,26 +5,20 @@
  */
 package ch.heigvd.amt.affinitiesnetwork.presentation;
 
-import ch.heigvd.amt.affinitiesnetwork.model.User;
-import ch.heigvd.amt.affinitiesnetwork.services.UsersService;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sun.rmi.runtime.Log;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author NS
  */
-public class UserServlet extends HttpServlet {
-    
-    @EJB
-    private UsersService us;
+public class SignInUpServlet extends HttpServlet {
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -38,20 +32,8 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String idString = request.getParameter("id");
-        if(idString == null) {response.sendError(404); return;}
-        try{
-            Long id = Long.parseLong(idString);
-            User u = us.getUser(id);
-            if(u == null) {response.sendError(404); return;}
-            request.setAttribute("user", u);
-            request.getRequestDispatcher("/WEB-INF/pages/user_profile.jsp").
-                    forward(request, response);
-        } catch(NumberFormatException e){
-            response.sendError(404); return;
-        }
-        
-        
+        request.getRequestDispatcher("/WEB-INF/pages/sign_up_in.jsp")
+                .forward(request, response);
     }
 
     /**
@@ -65,6 +47,18 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        log("do post");
+        //TODO check if username and password are correct
+        HttpSession session = request.getSession(false);
+        if(session != null && session.getAttribute("HTTP_REFERER") != null){
+            log("redirect");
+            response.sendRedirect((String)session.getAttribute("HTTP_REFERER"));
+        } else {
+            log("no redirect");
+            //TODO add warning message
+            response.sendRedirect("");
+        }
+        
     }
 
     /**

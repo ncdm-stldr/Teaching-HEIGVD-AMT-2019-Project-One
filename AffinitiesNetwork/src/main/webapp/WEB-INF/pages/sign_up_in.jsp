@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<form action="/action_page.php">
+<form method="POST" action="./sign_in_up">
   <div class="container">
     <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
+    <p>Please fill in this form to sign in / create an account.</p>
     <hr>
 
     <label for="email"><b>Email</b></label>
@@ -20,11 +20,8 @@
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
     <div class="clearfix">
-      <button type="button" class="signup_signin_btn">Sign up/Sign in</button>
+      <button type="submit" class="signup_signin_btn">Sign up/Sign in</button>
     </div>
   </div>
 </form>
