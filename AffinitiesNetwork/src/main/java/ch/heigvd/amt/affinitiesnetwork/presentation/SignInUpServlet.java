@@ -47,15 +47,12 @@ public class SignInUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        log("do post");
         //TODO check if username and password are correct
+        //TODO if they are not redirect to login again and with a warning message
         HttpSession session = request.getSession(false);
         if(session != null && session.getAttribute("HTTP_REFERER") != null){
-            log("redirect");
             response.sendRedirect((String)session.getAttribute("HTTP_REFERER"));
         } else {
-            log("no redirect");
-            //TODO add warning message
             response.sendRedirect("");
         }
         
