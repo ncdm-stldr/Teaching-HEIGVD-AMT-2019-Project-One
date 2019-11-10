@@ -11,9 +11,18 @@
   <div class="title">
     <center> <h1>${requestScope.centerOfInterest.name}<h1> </center>
       <div class="buttonsContainer">
-        <button type="button" name="button">-</button>
-        <button type="button" name="button">undefined</button>
-        <button type="button" name="button">+</button>
+          <form action="./me" method="post">
+              <input type="hidden" value="-" name="addAffinity" />
+              <button type="submit" name="button">-</button>
+          </form>
+          <form action="./me" method="post">
+              <input type="hidden" value="undefined" name="addAffinity" />
+              <button type="submit" name="button">undefined</button>
+          </form>
+          <form action="./me" method="post">
+              <input type="hidden" value="+" name="addAffinity" />
+              <button type="submit" name="button">+</button>
+          </form>
       </div>
 
     </div>
