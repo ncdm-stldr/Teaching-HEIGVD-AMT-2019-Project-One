@@ -23,7 +23,7 @@ import javax.ejb.Singleton;
  */
 @Singleton
 public class InMemoryDatabase {
-    
+    /*
     private static  HashMap<Long, User> users;
     private static  HashMap<Long, CenterOfInterest> centerOfInterests;
     private static  HashMap<Integer, Affinity> affinities;
@@ -96,4 +96,5 @@ public class InMemoryDatabase {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+*/
 }

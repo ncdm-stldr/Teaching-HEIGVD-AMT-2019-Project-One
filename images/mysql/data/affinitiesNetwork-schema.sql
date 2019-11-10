@@ -7,11 +7,19 @@ DROP SCHEMA IF EXISTS affinitiesNetwork;
 CREATE SCHEMA affinitiesNetwork;
 USE affinitiesNetwork;
 
-CREATE TABLE centerOfInterest (
-  id VARCHAR(45),
-  description VARCHAR(45),
-  PRIMARY KEY  (id)
+CREATE TABLE amt_user (
+  user_id INT,
+  firstName VARCHAR(45),
+  lastName VARCHAR(45)
 );
+  
+CREATE TABLE amt_centerOfInterest (
+  coi_id INT,
+  description VARCHAR(45),
+  PRIMARY KEY  (coi_id)
+);
+
+INSERT INTO amt_user(user_id, firstName, lastName) VALUES (0, "Simon", "Jobin");
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

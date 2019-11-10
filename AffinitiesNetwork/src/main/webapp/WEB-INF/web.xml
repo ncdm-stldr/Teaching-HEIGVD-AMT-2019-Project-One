@@ -27,6 +27,8 @@
     <servlet>
         <servlet-name>MeServlet</servlet-name>
         <servlet-class>ch.heigvd.amt.affinitiesnetwork.presentation.MeServlet</servlet-class>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.affinitiesnetwork.presentation.TestServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
@@ -47,6 +49,8 @@
     <servlet-mapping>
         <servlet-name>MeServlet</servlet-name>
         <url-pattern>/me</url-pattern>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/TestServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

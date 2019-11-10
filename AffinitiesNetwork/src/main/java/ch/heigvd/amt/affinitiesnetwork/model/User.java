@@ -14,21 +14,26 @@ import java.util.Collection;
 public class User {
     
     private long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private Collection<Affinity> affinities;
 
-    public User(long id, String name, Collection<Affinity> affinities) {
+    public User(long id, String firstName, String lastName) {
         this.id = id;
-        this.name = name;
-        this.affinities = affinities;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
+    }
+    
+    public String getLastName() {
+        return lastName;
     }
     
     public Collection<Affinity> getAffinities() {
