@@ -37,6 +37,7 @@ public class CenterOfInterestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        /*
         String idString = request.getParameter("id");
         if (idString == null) { response.sendError(404); return; }
         try {
@@ -47,7 +48,7 @@ public class CenterOfInterestServlet extends HttpServlet {
                 forward(request, response);
         } catch(NumberFormatException e){
             response.sendError(404); return;
-        }
+        }*/
     }
 
     /**

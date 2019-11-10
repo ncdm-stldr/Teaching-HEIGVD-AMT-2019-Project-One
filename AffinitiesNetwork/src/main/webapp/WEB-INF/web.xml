@@ -24,6 +24,10 @@
         <servlet-name>SignInUpServlet</servlet-name>
         <servlet-class>ch.heigvd.amt.affinitiesnetwork.presentation.SignInUpServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>ch.heigvd.amt.affinitiesnetwork.presentation.TestServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>SignInUpServlet</servlet-name>
         <url-pattern>/sign_in_up</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/TestServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
