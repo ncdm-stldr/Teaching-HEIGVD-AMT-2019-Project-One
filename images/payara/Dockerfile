@@ -1,6 +1,6 @@
 FROM payara/server-full:5.183
 
-COPY AffinitiesNetwork-1.0-SNAPSHOT.war $DEPLOY_DIR
+COPY ../AffinitiesNetwork/AffinitiesNetwork-1.0-SNAPSHOT.war $DEPLOY_DIR
 
 ADD drivers/mysql-connector-java-8.0.11.jar /opt/payara5/glassfish/lib/
 
