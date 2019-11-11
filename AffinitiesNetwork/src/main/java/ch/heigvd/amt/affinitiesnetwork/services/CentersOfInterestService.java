@@ -96,4 +96,26 @@ public class CentersOfInterestService implements CentersOfInterestServiceLocal {
     }
     
     
+    public List<CenterOfInterest> getNRandomCentersOfInterest(long n){
+       List<CenterOfInterest> centerOfInterests = new LinkedList<>();
+        
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT amt_centerOfInterest.coi_id, coi_name, description from amt_centerOfInterest limit ?");
+            pstmt.setLong(1, n);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()) {           
+                long coi_id = rs.getLong("amt_centerOfInterest.coi_id");
+                String coi_name = rs.getString("coi_name");
+                String description = rs.getString("description");
+                centerOfInterests.add(new CenterOfInterest(coi_id, coi_name, description));
+                connection.close();
+            }
+            
+        } catch(SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+        return centerOfInterests;
+    }
+    
 }

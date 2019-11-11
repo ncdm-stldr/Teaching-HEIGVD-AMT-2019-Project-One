@@ -46,7 +46,7 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        request.setAttribute("centersOfInterest", coiS.getCOIs());
+        request.setAttribute("centersOfInterest", coiS.getNRandomCentersOfInterest(20));
         request.getRequestDispatcher("/WEB-INF/pages/index.jsp")
                 .forward(request, response);
     }

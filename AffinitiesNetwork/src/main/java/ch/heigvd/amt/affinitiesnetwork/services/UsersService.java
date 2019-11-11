@@ -133,6 +133,7 @@ public class UsersService implements UsersServiceLocal {
     public boolean checkCredentials(Long id, String username, String password) {
          try {
             Connection connection = dataSource.getConnection();
+            
             PreparedStatement pstmt = connection.prepareStatement("SELECT user_id, amt_username, amt_password FROM amt_user WHERE amt_username = ?");
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
@@ -151,4 +152,5 @@ public class UsersService implements UsersServiceLocal {
         }       
         return false;
     }
+    
 }

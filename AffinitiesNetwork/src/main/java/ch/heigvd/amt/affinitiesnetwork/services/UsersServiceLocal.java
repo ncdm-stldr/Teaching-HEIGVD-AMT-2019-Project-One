@@ -18,12 +18,14 @@ public interface UsersServiceLocal {
     
     public List<User> getAllUsers();
     
-    //public List<CenterOfInterest> getNRandomCentersOfInterest(long n);
+    
     
     public List<CenterOfInterest> getUserCenterOfInterests(long id);
     
     public long numberOfCenterOfInterest();
     
     public boolean checkCredentials(Long id, String username, String password);
+    
+    
 
 }
