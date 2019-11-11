@@ -38,7 +38,7 @@ public class CentersOfInterestService implements CentersOfInterestServiceLocal {
         try {
             Connection connection = dataSource.getConnection();
             PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM amt_centerOfInterest WHERE random() < (" + n 
-                                                                + "/ (SELECT count(1) FROM amt_centerOfInterest)) limit " + n);
+                                                                + " / (SELECT count(1) FROM amt_centerOfInterest)) limit " + n);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()) {
                 long coi_id = rs.getLong("coi_id");
@@ -52,4 +52,48 @@ public class CentersOfInterestService implements CentersOfInterestServiceLocal {
         }
         return centerOfInterest;
     }
+    
+    @Override
+    public List<CenterOfInterest> getCOIs() {
+        List<CenterOfInterest> centerOfInterest = new LinkedList<>();
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM amt_centerOfInterest");
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()) {
+                long coi_id = rs.getLong("coi_id");
+                String coi_name = rs.getString("coi_name");
+                String description = rs.getString("description");
+                centerOfInterest.add(new CenterOfInterest(coi_id, coi_name, description));
+                connection.close();
+            }
+        } catch(SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return centerOfInterest;
+    }
+    
+    
+    public CenterOfInterest getCenterOfInterest(long id){
+        CenterOfInterest centerOfInterest = null;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "SELECT * FROM amt_centerOfInterest WHERE coi_id = ?");
+            pstmt.setLong(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()) {
+                long coi_id = rs.getLong("coi_id");
+                String coi_name = rs.getString("coi_name");
+                String description = rs.getString("description");
+                centerOfInterest = new CenterOfInterest(coi_id, coi_name, description);
+                connection.close();
+            }
+        } catch(SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return centerOfInterest;
+    }
+    
+    
 }

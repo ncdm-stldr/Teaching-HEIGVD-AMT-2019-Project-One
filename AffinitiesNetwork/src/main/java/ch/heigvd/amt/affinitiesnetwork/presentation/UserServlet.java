@@ -47,7 +47,7 @@ public class UserServlet extends HttpServlet {
             Long id = Long.parseLong(idString);
             User u = us.getUser(id);
             List<CenterOfInterest> centerOfInterests = us.getUserCenterOfInterests(u.getId());
-            System.out.println("#centerofint: " + centerOfInterests.size());
+            //System.out.println("#centerofint: " + centerOfInterests.size());
             if(u == null) {response.sendError(404); return;}
             request.setAttribute("user", u);
             request.setAttribute("centerOfInterests", centerOfInterests);

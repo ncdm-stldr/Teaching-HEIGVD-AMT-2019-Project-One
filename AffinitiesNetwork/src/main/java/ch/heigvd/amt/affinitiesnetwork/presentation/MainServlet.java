@@ -8,7 +8,9 @@ package ch.heigvd.amt.affinitiesnetwork.presentation;
 import ch.heigvd.amt.affinitiesnetwork.model.CenterOfInterest;
 import ch.heigvd.amt.affinitiesnetwork.model.User;
 import ch.heigvd.amt.affinitiesnetwork.services.CentersOfInterestService;
+import ch.heigvd.amt.affinitiesnetwork.services.CentersOfInterestServiceLocal;
 import ch.heigvd.amt.affinitiesnetwork.services.UsersService;
+import ch.heigvd.amt.affinitiesnetwork.services.UsersServiceLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -26,18 +28,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author NS
  */
 public class MainServlet extends HttpServlet {
-    //quickstart mocked database (will be removed later)
-    static final Collection<CenterOfInterest> centersOfInterest = new ArrayList<CenterOfInterest>();
-    static {
-        centersOfInterest.add(new CenterOfInterest(1, "wejhvcdgwj", "jdch wsjdcvs jdxsvh"));
-        centersOfInterest.add(new CenterOfInterest(2, "cdbhdj", "jidzcg jdxsvh"));
-        centersOfInterest.add(new CenterOfInterest(3, "wefdgwj", "jdch wsjdcvs jdxsvh"));
-        centersOfInterest.add(new CenterOfInterest(4, "wejfwj", "jdc37467293vs jdxsvh"));
-    }
+    
     
     @EJB
-    private UsersService us;
-
+    private CentersOfInterestServiceLocal coiS;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -52,10 +46,9 @@ public class MainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        /*
-        request.setAttribute("centersOfInterest", cOIS.getNRandomCentersOfInterest(10));
+        request.setAttribute("centersOfInterest", coiS.getCOIs());
         request.getRequestDispatcher("/WEB-INF/pages/index.jsp")
-                .forward(request, response);*/
+                .forward(request, response);
     }
 
     /**

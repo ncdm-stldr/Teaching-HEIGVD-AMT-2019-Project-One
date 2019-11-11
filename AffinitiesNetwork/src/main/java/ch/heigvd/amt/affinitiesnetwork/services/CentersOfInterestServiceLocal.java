@@ -18,4 +18,8 @@ import javax.ejb.Local;
 public interface CentersOfInterestServiceLocal {
 
     public List<CenterOfInterest> getNRandomCOI(int n); 
+    
+    public List<CenterOfInterest> getCOIs();
+    
+    public CenterOfInterest getCenterOfInterest(long id);
 }

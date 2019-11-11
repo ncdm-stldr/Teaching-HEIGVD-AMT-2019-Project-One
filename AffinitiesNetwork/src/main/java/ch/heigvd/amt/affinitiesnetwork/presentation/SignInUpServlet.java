@@ -52,7 +52,7 @@ public class SignInUpServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if(session != null && session.getAttribute("HTTP_REFERER") != null){
             session.setAttribute("authenticated", "true");
-            response.sendRedirect((String)session.getAttribute("HTTP_REFERER"));
+            response.sendRedirect(session.getAttribute("HTTP_REFERER").toString());
         } else {
             response.sendRedirect("");
         }

@@ -20,9 +20,7 @@ public interface UsersServiceLocal {
     
     public List<CenterOfInterest> getUserCenterOfInterests(long id);
     
-<<<<<<< HEAD
     public long numberOfCenterOfInterest();
-=======
+    
     public boolean checkCredentials(long id, String username, String password);
->>>>>>> 8d6a0b2789692075ccd837d3008a5806c8d6de92
 }

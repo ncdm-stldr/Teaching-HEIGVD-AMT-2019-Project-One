@@ -1,4 +1,4 @@
 cd AffinitiesNetwork
-mvn install
+mvn clean install
 cd ..
 docker-compose up

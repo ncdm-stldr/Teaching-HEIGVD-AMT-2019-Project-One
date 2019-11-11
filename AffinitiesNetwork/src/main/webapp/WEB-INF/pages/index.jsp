@@ -5,7 +5,7 @@
 <head>
   <title>Start Page</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
   <div class="title">
@@ -16,7 +16,7 @@
     <c:forEach var="centerOfInterest" items="${requestScope.centersOfInterest}">
     <div class="container">
       <h2>
-        <a href="${pageContext.request.contextPath}/CenterOfInterestServlet?id=2">${centerOfInterest.name}</a>
+        <a href="${pageContext.request.contextPath}/center_of_interest?id=${centerOfInterest.id}">${centerOfInterest.name}</a>
       </h2>
       ${centerOfInterest.description}
     </div>

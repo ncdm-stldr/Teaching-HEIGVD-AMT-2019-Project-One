@@ -7,6 +7,7 @@ package ch.heigvd.amt.affinitiesnetwork.presentation;
 
 import ch.heigvd.amt.affinitiesnetwork.model.CenterOfInterest;
 import ch.heigvd.amt.affinitiesnetwork.services.CentersOfInterestService;
+import ch.heigvd.amt.affinitiesnetwork.services.CentersOfInterestServiceLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CenterOfInterestServlet extends HttpServlet {
     
     @EJB
-    private CentersOfInterestService cOIS;
+    private CentersOfInterestServiceLocal coiS;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -37,18 +38,18 @@ public class CenterOfInterestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /*
         String idString = request.getParameter("id");
         if (idString == null) { response.sendError(404); return; }
         try {
             Long id = Long.parseLong(idString);
-            CenterOfInterest cio = cOIS.getCenterOfInterest(id);
+            CenterOfInterest cio = coiS.getCenterOfInterest(id);
+            if(cio == null) { response.sendError(404); return; }
             request.setAttribute("centerOfInterest", cio);
             request.getRequestDispatcher("/WEB-INF/pages/center_of_interest.jsp").
                 forward(request, response);
         } catch(NumberFormatException e){
             response.sendError(404); return;
-        }*/
+        }
     }
 
     /**
