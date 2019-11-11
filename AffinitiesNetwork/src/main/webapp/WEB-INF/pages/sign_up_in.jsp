@@ -15,7 +15,7 @@
     <hr>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="text" placeholder="Enter Email" name="username" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
@@ -23,6 +23,11 @@
     <div class="clearfix">
       <button type="submit" class="signup_signin_btn">Sign up/Sign in</button>
     </div>
+    
+    <c:if test="${badLogin != null}">
+        <p class="errorMessage"> invalid credentials </p>
+    </c:if>
+    
   </div>
 </form>
 

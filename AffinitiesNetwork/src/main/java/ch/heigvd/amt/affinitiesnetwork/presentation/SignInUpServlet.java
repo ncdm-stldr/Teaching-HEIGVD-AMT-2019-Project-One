@@ -50,11 +50,22 @@ public class SignInUpServlet extends HttpServlet {
         //TODO check if username and password are correct
         //TODO if they are not redirect to login again and with a warning message
         HttpSession session = request.getSession(false);
-        if(session != null && session.getAttribute("HTTP_REFERER") != null){
+        if(session == null) {session = request.getSession();}
+        //if bad login
+        String username = request.getParameter("username");
+        String psw = request.getParameter("psw");
+        if(!"admin".equals(username) && !"admin".equals(psw)){
+            request.setAttribute("badLogin", true);
+            request.getRequestDispatcher("/WEB-INF/pages/sign_up_in.jsp")
+                    .forward(request, response);
+        }
+        if(session.getAttribute("HTTP_REFERER") != null){
             session.setAttribute("authenticated", "true");
             response.sendRedirect(session.getAttribute("HTTP_REFERER").toString());
+            session.removeAttribute("HTTP_REFERER");
         } else {
-            response.sendRedirect("");
+            request.getRequestDispatcher("/WEB-INF/pages/index.jsp")
+                    .forward(request, response);
         }
         
     }
