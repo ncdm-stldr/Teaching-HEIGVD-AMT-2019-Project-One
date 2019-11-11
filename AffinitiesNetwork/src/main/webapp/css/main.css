@@ -45,6 +45,11 @@ button {
   margin-bottom: 16px;
 }
 
+.buttonWrapper {
+  flex-grow: 1;
+  width: auto;
+}
+
 .buttonsContainer {
   display: flex;
   flex-direction: row;
