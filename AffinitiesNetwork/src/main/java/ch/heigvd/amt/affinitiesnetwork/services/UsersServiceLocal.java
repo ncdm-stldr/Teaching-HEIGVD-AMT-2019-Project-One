@@ -14,6 +14,8 @@ public interface UsersServiceLocal {
     
     public User getUser(long id);
 
+    public void deleteUser(long id);
+    
     public List<User> getAllUsers();
     
     //public List<CenterOfInterest> getNRandomCentersOfInterest(long n);
@@ -23,4 +25,5 @@ public interface UsersServiceLocal {
     public long numberOfCenterOfInterest();
     
     public boolean checkCredentials(long id, String username, String password);
+
 }
