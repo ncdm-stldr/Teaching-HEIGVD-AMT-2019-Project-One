@@ -33,8 +33,21 @@ public class UsersService implements UsersServiceLocal {
     private DataSource dataSource;
     
     public User getUser(long id){
-        //return db.getUser(id);
-        return null;
+        User user;
+        Connection connection = dataSource.getConnection();
+        try {
+            PreparedStatement pstmt = connection.prepareStatement("SELECT user_id, firstName, lastName FROM amt_user WHERE user_id = " + id);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()) {
+                long user_id = rs.getLong("user_id");
+                String firstName = rs.getString("firstName");
+                String lastName = rs.getString("lastName");
+                user = new User(user_id, firstName, lastName);
+                return user;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -45,10 +58,10 @@ public class UsersService implements UsersServiceLocal {
             PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM amt_user");
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()) {
-                long id = rs.getLong("user_id");
+                long user_id = rs.getLong("user_id");
                 String firstName = rs.getString("firstName");
                 String lastName = rs.getString("lastName");
-                users.add(new User(id, firstName, lastName));
+                users.add(new User(user_id, firstName, lastName));
                 connection.close();
             }
         } catch(SQLException ex) {
