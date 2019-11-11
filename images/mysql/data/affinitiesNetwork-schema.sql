@@ -34,13 +34,13 @@ CREATE TABLE amt_affinity (
     FOREIGN KEY (coi_id) REFERENCES amt_centerOfInterest(coi_id)
 );
 
-INSERT INTO amt_user(firstName, lastName, username, password) VALUES ("Simon", "Jobin");
-INSERT INTO amt_user(firstName, lastName) VALUES ("Toto", "Titi");
-INSERT INTO amt_user(firstName, lastName) VALUES ("Pierre", "Dupont");
-INSERT INTO amt_user(firstName, lastName) VALUES ("Georges", "Bush");
-INSERT INTO amt_user(firstName, lastName) VALUES ("Gilles", "Surchat");
-INSERT INTO amt_user(firstName, lastName) VALUES ("Pierre", "Dupond");
-INSERT INTO amt_user(firstName, lastName) VALUES ("Paul", "Dupond");
+INSERT INTO amt_user(firstName, lastName, amt_username, amt_password) VALUES ("Simon", "Jobin", "user", "password");
+INSERT INTO amt_user(firstName, lastName, amt_username, amt_password) VALUES ("Toto", "Titi", "user", "password");
+INSERT INTO amt_user(firstName, lastName, amt_username, amt_password) VALUES ("Pierre", "Dupont", "user", "password");
+INSERT INTO amt_user(firstName, lastName, amt_username, amt_password) VALUES ("Georges", "Bush", "user", "password");
+INSERT INTO amt_user(firstName, lastName, amt_username, amt_password) VALUES ("Gilles", "Surchat", "user", "password");
+INSERT INTO amt_user(firstName, lastName, amt_username, amt_password) VALUES ("Pierre", "Dupond", "user", "password");
+INSERT INTO amt_user(firstName, lastName, amt_username, amt_password) VALUES ("Paul", "Dupond", "user", "password");
 
 INSERT INTO amt_centerOfInterest(coi_name, description) VALUES ("football", "");
 INSERT INTO amt_centerOfInterest(coi_name, description) VALUES ("handball", "");
