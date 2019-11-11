@@ -22,4 +22,6 @@ public interface CentersOfInterestServiceLocal {
     public List<CenterOfInterest> getCOIs();
     
     public CenterOfInterest getCenterOfInterest(long id);
+    
+    public List<CenterOfInterest> getNRandomCentersOfInterest(long n);
 }

@@ -10,9 +10,9 @@
 <body>
   
   <div class="sidenav">
-    <a href="./me">user profile</a>
-    <a href="./sign_up_in">login</a>
-    <a href="./sign_up_in">sign in</a>
+    <a href="./user">user profile</a>
+    <a href="./sign_in_up">login</a>
+    <a href="./sign_in_up">sign in</a>
     <a href="./logout">logout</a>
   </div>
   

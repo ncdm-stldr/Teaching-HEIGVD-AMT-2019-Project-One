@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import sun.rmi.runtime.Log;
 
 /**
@@ -42,13 +43,22 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String idString = request.getParameter("id");
-        if(idString == null) {response.sendError(404); return;}
+        Long id = null;
+        if(idString == null || (id = Long.parseLong(idString)) == null) {
+            HttpSession session = request.getSession(false);
+            if(session == null || (id = (Long) session.getAttribute("user_id")) == null) {
+                request.getRequestDispatcher("/WEB-INF/pages/sign_up_in.jsp")
+                        .forward(request, response);
+                return;
+            }
+        }
+            
         try{
-            Long id = Long.parseLong(idString);
+            System.out.println(id);
             User u = us.getUser(id);
             List<CenterOfInterest> centerOfInterests = us.getUserCenterOfInterests(u.getId());
             //System.out.println("#centerofint: " + centerOfInterests.size());
-            if(u == null) {response.sendError(404); return;}
+            if(u == null) { response.sendError(404); return; }
             request.setAttribute("user", u);
             request.setAttribute("centerOfInterests", centerOfInterests);
             request.getRequestDispatcher("/WEB-INF/pages/user_profile.jsp").

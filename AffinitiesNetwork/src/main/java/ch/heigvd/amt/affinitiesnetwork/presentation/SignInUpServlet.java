@@ -68,15 +68,14 @@ public class SignInUpServlet extends HttpServlet {
         } else {
             //we are authenticated!
             session.setAttribute("authenticated", "true");
-            session.setAttribute("user_id", "id");
+            session.setAttribute("user_id", id);
         }
         if(session.getAttribute("HTTP_REFERER") != null){
             response.sendRedirect(session.getAttribute("HTTP_REFERER").toString());
             session.removeAttribute("HTTP_REFERER");
             return;
         } else {
-            request.getRequestDispatcher("/WEB-INF/pages/index.jsp")
-                    .forward(request, response);
+            response.sendRedirect("./index");
             return;
         }
         
