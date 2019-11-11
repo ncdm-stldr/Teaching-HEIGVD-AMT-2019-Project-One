@@ -13,5 +13,5 @@ A user will be able to:
 
 to start the payara server with the docker topology, just run the bash script on the project root. Access the main page at
 ```text
-192.168.99.100/AffinitiesNetwork-1.0-SNAPSHOT/index
+192.168.99.100:8080/AffinitiesNetwork-1.0-SNAPSHOT/index
 ```
