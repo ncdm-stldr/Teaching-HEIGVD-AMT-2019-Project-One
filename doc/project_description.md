@@ -6,3 +6,12 @@ A user will be able to:
 - Add an affinity between himself and a center of interest.
 - Merge centers of interest (to avoid duplication).
 - Browse centers of interest pages, users and affinities (when he has the authorization).
+
+![image](../img/ER.png)
+
+## Automation
+
+to start the payara server with the docker topology, just run the bash script on the project root. Access the main page at
+```text
+192.168.99.100/AffinitiesNetwork-1.0-SNAPSHOT/index
+```
