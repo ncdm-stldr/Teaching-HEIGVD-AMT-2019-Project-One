@@ -24,6 +24,6 @@ public interface UsersServiceLocal {
     
     public long numberOfCenterOfInterest();
     
-    public boolean checkCredentials(long id, String username, String password);
+    public boolean checkCredentials(Long id, String username, String password);
 
 }

@@ -130,17 +130,19 @@ public class UsersService implements UsersServiceLocal {
     }
     
     @Override
-    public boolean checkCredentials(long id, String username, String password) {
+    public boolean checkCredentials(Long id, String username, String password) {
          try {
             Connection connection = dataSource.getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("SELECT amt_username, amt_password FROM amt_user WHERE user_id = " + id);
+            PreparedStatement pstmt = connection.prepareStatement("SELECT user_id, amt_username, amt_password FROM amt_user WHERE amt_username = ?");
+            pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next()) {           
-               
+            if(rs.next()) {           
+                id = Long.parseLong(rs.getString("user_id"));
                 String amt_username = rs.getString("amt_username");
                 String amt_password = rs.getString("amt_password");
                 connection.close();
                 if(amt_username.equals(username) && amt_password.equals(password))
+                    System.out.println("real user pass: " + amt_username);
                     return true;
             }
             

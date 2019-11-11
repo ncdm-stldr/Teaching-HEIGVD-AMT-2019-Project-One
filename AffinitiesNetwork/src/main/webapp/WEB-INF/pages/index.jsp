@@ -8,20 +8,35 @@
   <link rel="stylesheet" type="text/css" href="./css/main.css">
 </head>
 <body>
-  <div class="title">
-    <center> <h1>Centers of interest<h1> </center>
+  
+  <div class="sidenav">
+    <a href="./me">user profile</a>
+    <a href="./sign_up_in">login</a>
+    <a href="./sign_up_in">sign in</a>
+    <a href="./logout">logout</a>
   </div>
-
-  <div>
-    <c:forEach var="centerOfInterest" items="${requestScope.centersOfInterest}">
-    <div class="container">
-      <h2>
-        <a href="${pageContext.request.contextPath}/center_of_interest?id=${centerOfInterest.id}">${centerOfInterest.name}</a>
-      </h2>
-      ${centerOfInterest.description}
+  
+  
+  <div class="main">
+    
+    
+    <div class="title">
+      <center> <h1>Centers of interest<h1> </center>
+      </div>
+      
+      <div>
+        <c:forEach var="centerOfInterest" items="${requestScope.centersOfInterest}">
+        <div class="container">
+          <h2>
+            <a href="${pageContext.request.contextPath}/center_of_interest?id=${centerOfInterest.id}">${centerOfInterest.name}</a>
+          </h2>
+          ${centerOfInterest.description}
+        </div>
+      </c:forEach>
     </div>
-  </c:forEach>
+    
   </div>
-
+  
+  
 </body>
 </html>
