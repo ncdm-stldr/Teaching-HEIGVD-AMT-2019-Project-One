@@ -11,6 +11,8 @@ CREATE TABLE amt_user (
   user_id INT NOT NULL auto_increment,
   firstName VARCHAR(45),
   lastName VARCHAR(45),
+  amt_username VARCHAR(45),
+  amt_password VARCHAR(45),
   PRIMARY KEY(user_id)
 );
   
@@ -32,7 +34,7 @@ CREATE TABLE amt_affinity (
     FOREIGN KEY (coi_id) REFERENCES amt_centerOfInterest(coi_id)
 );
 
-INSERT INTO amt_user(firstName, lastName) VALUES ("Simon", "Jobin");
+INSERT INTO amt_user(firstName, lastName, username, password) VALUES ("Simon", "Jobin");
 INSERT INTO amt_user(firstName, lastName) VALUES ("Toto", "Titi");
 INSERT INTO amt_user(firstName, lastName) VALUES ("Pierre", "Dupont");
 INSERT INTO amt_user(firstName, lastName) VALUES ("Georges", "Bush");

@@ -34,8 +34,8 @@ public class UsersService implements UsersServiceLocal {
     
     public User getUser(long id){
         User user;
-        Connection connection = dataSource.getConnection();
         try {
+            Connection connection = dataSource.getConnection();
             PreparedStatement pstmt = connection.prepareStatement("SELECT user_id, firstName, lastName FROM amt_user WHERE user_id = " + id);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()) {
@@ -48,6 +48,7 @@ public class UsersService implements UsersServiceLocal {
         } catch (SQLException ex) {
             Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
     @Override
@@ -68,5 +69,27 @@ public class UsersService implements UsersServiceLocal {
             Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return users;
+    }
+
+    @Override
+    public List<CenterOfInterest> getUserCenterOfInterests(long id) {
+        List<CenterOfInterest> centerOfInterests = new ArrayList<>();
+        
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT coi_id, coi_name, description FROM amt_centerOfInterest" +
+                                                                  "INNER JOIN amt_affinity ON amt_centerOfInterest.coi_id = amt_affinity.coi_id" +
+                                                                  "WHERE user_id = " + id + ";");
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()) {           
+                String coi_id = rs.getString("coi_id");
+                String coi_name = rs.getString("coi_name");
+                String description = rs.getString("description");
+            }
+        } catch(SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return centerOfInterests;
     }
 }
