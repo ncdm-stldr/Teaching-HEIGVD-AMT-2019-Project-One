@@ -131,8 +131,9 @@ public class UsersService implements UsersServiceLocal {
     
     @Override
     public boolean checkCredentials(Long id, String username, String password) {
+        Connection connection = null;
          try {
-            Connection connection = dataSource.getConnection();
+            connection = dataSource.getConnection();
             
             PreparedStatement pstmt = connection.prepareStatement("SELECT user_id, amt_username, amt_password FROM amt_user WHERE amt_username = ?");
             pstmt.setString(1, username);
@@ -151,6 +152,31 @@ public class UsersService implements UsersServiceLocal {
             Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
         }       
         return false;
+    }
+    
+    
+    public void addUser(String firstName, String lastName, String username, String password){
+        Connection connection;
+        try {
+            connection = dataSource.getConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+            return;
+        }
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(
+                    "INSERT INTO amt_user (firstName, lastName, amt_username, amt_password) " +
+                    "VALUES (?, ?, ?, ?)");
+            pstmt.setString(0, firstName);
+            pstmt.setString(1, lastName);
+            pstmt.setString(2, username);
+            pstmt.setString(3, password);
+            pstmt.execute();
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }
     
 }

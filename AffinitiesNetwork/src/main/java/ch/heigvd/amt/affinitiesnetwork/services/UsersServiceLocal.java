@@ -18,7 +18,7 @@ public interface UsersServiceLocal {
     
     public List<User> getAllUsers();
     
-    
+    public void addUser(String firstName, String lastName, String username, String password);
     
     public List<CenterOfInterest> getUserCenterOfInterests(long id);
     
