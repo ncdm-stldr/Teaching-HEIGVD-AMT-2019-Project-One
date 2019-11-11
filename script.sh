@@ -1,3 +1,4 @@
+
 cd AffinitiesNetwork
 mvn clean install
 cd ..

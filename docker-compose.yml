@@ -2,7 +2,9 @@ version: '3'
 services:
     
     payara:
-        build: images/payara
+        build: 
+            context: .
+            dockerfile: images/payara/Dockerfile
         environment:
             - ADMIN_PASSWORD=adminadmin
         links:

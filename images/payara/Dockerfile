@@ -1,8 +1,8 @@
 FROM payara/server-full:5.183
 
-COPY ../AffinitiesNetwork/AffinitiesNetwork-1.0-SNAPSHOT.war $DEPLOY_DIR
+COPY AffinitiesNetwork/target/AffinitiesNetwork-1.0-SNAPSHOT.war $DEPLOY_DIR
 
-ADD drivers/mysql-connector-java-8.0.11.jar /opt/payara5/glassfish/lib/
+ADD images/payara/drivers/mysql-connector-java-8.0.11.jar /opt/payara5/glassfish/lib/
 
 RUN echo "AS_ADMIN_PASSWORD=admin" > /tmp/gfpw.txt && \
 	# start domain1 and gives all parameters needed to set up jdbc drivers
