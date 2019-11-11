@@ -17,4 +17,6 @@ public interface UsersServiceLocal {
     public List<User> getAllUsers();
     
     public List<CenterOfInterest> getUserCenterOfInterests(long id);
+    
+    public boolean checkCredentials(long id, String username, String password);
 }

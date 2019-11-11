@@ -6,35 +6,50 @@
 package ch.heigvd.amt.affinitiesnetwork.services;
 
 import ch.heigvd.amt.affinitiesnetwork.model.CenterOfInterest;
+import ch.heigvd.amt.affinitiesnetwork.model.User;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.sql.DataSource;
 
 /**
  *
  * @author NS
  */
 @Stateless
-public class CentersOfInterestService {
+public class CentersOfInterestService implements CentersOfInterestServiceLocal {
     
-    /*
-    @EJB
-    private InMemoryDatabase db;
-
-    //TODO replace this with real data taken from database
-    public Collection<CenterOfInterest> getNRandomCentersOfInterest(int n) {
-        return db.getNRandomCentersOfInterest(n);
+    @Resource(lookup = "jdbc/affinitiesNetwork")
+    private DataSource dataSource;
+    
+    @Override
+    public List<CenterOfInterest> getNRandomCOI(int n) {
+        List<CenterOfInterest> centerOfInterest = new LinkedList<>();
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM amt_centerOfInterest WHERE random() < (" + n 
+                                                                + "/ (SELECT count(1) FROM amt_centerOfInterest)) limit " + n);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()) {
+                long coi_id = rs.getLong("coi_id");
+                String coi_name = rs.getString("coi_name");
+                String description = rs.getString("description");
+                centerOfInterest.add(new CenterOfInterest(coi_id, coi_name, description));
+                connection.close();
+            }
+        } catch(SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return centerOfInterest;
     }
-    
-    public CenterOfInterest getCenterOfInterest(long id){
-        return db.getCenterOfInterest(id);
-    }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    
-    */
-    
 }
