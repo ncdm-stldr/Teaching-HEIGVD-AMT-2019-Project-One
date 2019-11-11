@@ -36,14 +36,6 @@ public class User {
         return lastName;
     }
     
-    public Collection<Affinity> getAffinities() {
-        return affinities;
-    }
-
-    public void addAffinity(Affinity affinities) {
-        this.affinities.add(affinities);
-    }
-    
     @Override
     public boolean equals(Object o){
         if(o == null || o instanceof User) return false;

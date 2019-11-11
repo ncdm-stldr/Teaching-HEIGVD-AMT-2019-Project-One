@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="title">
-    <h1> <center> Profile of user: ${user.name} </center> </h1>
+    <h1> <center> Profile of user: ${user.firstName} </center> </h1>
   </div>
   <div class="container">
       <h2> <center> Affinities </center> </h2>
@@ -17,10 +17,9 @@
         <th>Intensity of affinity</th>
         <th>Center Of Interest</th>
       </tr>
-      <c:forEach var="affinity" items="${user.affinities}">
+      <c:forEach var="centerOfInterest" items="${centerOfInterests}">
         <tr>
-          <td>${affinity.intensity}</td>
-          <td>${affinity.centerOfInterest.name}</td >
+          <td>${centerOfInterest.name}</td >
         </tr>
       </c:forEach>
     </table>

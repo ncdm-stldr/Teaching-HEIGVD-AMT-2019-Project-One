@@ -6,11 +6,15 @@
 package ch.heigvd.amt.affinitiesnetwork.presentation;
 
 import ch.heigvd.amt.affinitiesnetwork.model.CenterOfInterest;
+import ch.heigvd.amt.affinitiesnetwork.model.User;
 import ch.heigvd.amt.affinitiesnetwork.services.CentersOfInterestService;
+import ch.heigvd.amt.affinitiesnetwork.services.UsersService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +36,7 @@ public class MainServlet extends HttpServlet {
     }
     
     @EJB
-    private CentersOfInterestService cOIS;
+    private UsersService us;
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -47,6 +51,7 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         /*
         request.setAttribute("centersOfInterest", cOIS.getNRandomCentersOfInterest(10));
         request.getRequestDispatcher("/WEB-INF/pages/index.jsp")

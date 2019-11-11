@@ -5,11 +5,14 @@
  */
 package ch.heigvd.amt.affinitiesnetwork.presentation;
 
+import ch.heigvd.amt.affinitiesnetwork.model.CenterOfInterest;
 import ch.heigvd.amt.affinitiesnetwork.model.User;
 import ch.heigvd.amt.affinitiesnetwork.services.UsersService;
+import ch.heigvd.amt.affinitiesnetwork.services.UsersServiceLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +27,7 @@ import sun.rmi.runtime.Log;
 public class UserServlet extends HttpServlet {
     
     @EJB
-    private UsersService us;
+    private UsersServiceLocal us;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -43,8 +46,11 @@ public class UserServlet extends HttpServlet {
         try{
             Long id = Long.parseLong(idString);
             User u = us.getUser(id);
+            List<CenterOfInterest> centerOfInterests = us.getUserCenterOfInterests(u.getId());
+            System.out.println("#centerofint: " + centerOfInterests.size());
             if(u == null) {response.sendError(404); return;}
             request.setAttribute("user", u);
+            request.setAttribute("centerOfInterests", centerOfInterests);
             request.getRequestDispatcher("/WEB-INF/pages/user_profile.jsp").
                     forward(request, response);
         } catch(NumberFormatException e){

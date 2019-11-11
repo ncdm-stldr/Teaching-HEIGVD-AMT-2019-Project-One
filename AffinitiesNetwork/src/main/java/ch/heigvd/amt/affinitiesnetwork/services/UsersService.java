@@ -70,6 +70,22 @@ public class UsersService implements UsersServiceLocal {
         }
         return users;
     }
+    
+    @Override
+    public long numberOfCenterOfInterest(){
+        long n = 0;
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT COUNT(*) FROM amt_centerOfInterest");
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                n = rs.getLong(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
 
     @Override
     public List<CenterOfInterest> getUserCenterOfInterests(long id) {

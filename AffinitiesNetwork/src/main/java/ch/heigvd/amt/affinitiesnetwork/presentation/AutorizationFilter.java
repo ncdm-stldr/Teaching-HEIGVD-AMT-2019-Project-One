@@ -65,9 +65,13 @@ public class AutorizationFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         
-        HttpSession session = httpRequest.getSession(false);
+        HttpSession session;
+        if((session = httpRequest.getSession(false)) == null){
+            session = httpRequest.getSession();
+        }
+        
         if(debug) log("hello");
-        if(session == null || session.getAttribute("authenticated") == null){
+        if(session.getAttribute("authenticated") == null){
             if(debug) log("unauthorized access request");
             session.setAttribute("HTTP_REFERER", httpRequest.getRequestURL());
             httpResponse.sendRedirect("sign_in_up");
