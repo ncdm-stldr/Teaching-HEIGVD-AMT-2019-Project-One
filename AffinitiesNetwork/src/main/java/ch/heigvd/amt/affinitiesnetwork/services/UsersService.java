@@ -52,6 +52,24 @@ public class UsersService implements UsersServiceLocal {
     }
 
     @Override
+    public void deleteUser(long id) {
+        
+        try {
+            Connection connection = dataSource.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("DELETE * FROM amt_user WHERE user_id = ?");
+            pstmt.setLong(1, id);
+            
+            int n = pstmt.executeUpdate(); // number of deleted user(s)
+            if (n != 1) {
+               Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, "Cannot delete user : not found");
+            }
+           
+        } catch(SQLException ex) {
+            Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         try {
